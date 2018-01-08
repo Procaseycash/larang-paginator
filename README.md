@@ -22,7 +22,8 @@ This is a Laravel Angular Paginator for tables. For other backend language to us
             }
        ]
     }
- 
+ ## Release Note
+ Due to compatibility issues in Angular 4 & 5, we will maintain 
  ## Dependencies
  
  `npm install font-awesome --save`
