@@ -25,10 +25,6 @@ This is a Laravel Angular Paginator for tables. For other backend language to us
  
  ## Dependencies
  
- `npm install bootstrap@4.0.0-beta.2`
- 
- `npm install --save @ng-bootstrap/ng-bootstrap`
- 
  `npm install font-awesome --save`
  
  Read up on how to setup bootstrap and ng-bootstrap in your application.
@@ -41,6 +37,8 @@ This is a Laravel Angular Paginator for tables. For other backend language to us
 ## Usage in Application
 
 Follow the instruction below to use LarangPaginator.
+
+`import {LarangPaginatorModule} from 'larang-paginator';`
 
 Add `LarangPaginatorModule.forRoot()` in AppModule or Other Modules using `LarangPaginatorModule`
      
