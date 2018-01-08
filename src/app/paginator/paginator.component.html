@@ -9,7 +9,7 @@
       </a>
     </li>
     <li  *ngIf="totalPages.length > perNav">
-      <a (click)="getPaging()" ngbTooltip="Load More Page Navigation" role="button" class="page-link">...</a>
+      <a (click)="getPaging()" ngbTooltip="Load More Navigation" role="button" class="page-link">...</a>
     </li>
     <li  *ngIf="pages.length === 0">
       <a role="button" class="page-link"><i class="fa fa-spin fa-spinner"></i></a>

@@ -29,6 +29,8 @@ This is a Laravel Angular Paginator for tables. For other backend languaage to u
  
  `npm install --save @ng-bootstrap/ng-bootstrap`
  
+ `npm install font-awesome --save`
+ 
  Read up on how to setup bootstrap and ng-bootstrap in your application.
  
  ## Installation
