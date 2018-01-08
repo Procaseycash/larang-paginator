@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {EventsService} from "./paginator/event.service";
-import {HttpClient} from "@angular/common/http";
+import {Http} from "@angular/http";
 
 @Component({
   selector: 'app-root',
@@ -18,7 +18,7 @@ export class AppComponent implements OnInit {
 
   };
 
-  constructor(private eventsService: EventsService, private http: HttpClient) {
+  constructor(private eventsService: EventsService, private http: Http) {
     this.eventsService.on(this.paginator.from, (res) => {
       // pass response to the property rendering the data in view
 
