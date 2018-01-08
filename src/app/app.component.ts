@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {EventsService} from "./paginator/event.service";
 import {Http} from "@angular/http";
-
+import 'rxjs/add/operator/map';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -26,7 +26,8 @@ export class AppComponent implements OnInit {
     });
   }
   private getTransactions() {
-    this.http.get(this.paginator.path + `?page=1&paginate=${this.paginator.limit}`).subscribe(
+    this.http.get(this.paginator.path + `?page=1&paginate=${this.paginator.limit}`)
+      .map( res => res.json()).subscribe(
       (res) => {
         this.paginator.data = res['data'];
       },
