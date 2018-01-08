@@ -4,6 +4,7 @@ import { NgModule } from '@angular/core';
 
 import { AppComponent } from './app.component';
 import {LarangPaginatorModule} from './paginator/larang.paginator.module';
+import {HttpClientModule} from "@angular/common/http";
 
 
 @NgModule({
@@ -12,6 +13,7 @@ import {LarangPaginatorModule} from './paginator/larang.paginator.module';
   ],
   imports: [
     BrowserModule,
+    HttpClientModule,
     LarangPaginatorModule.forRoot()
   ],
   providers: [],
