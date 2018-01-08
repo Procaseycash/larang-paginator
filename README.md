@@ -50,16 +50,17 @@ Add `LarangPaginatorModule.forRoot()` in AppModule or Other Modules using `Laran
   limit: paginated data per page, default is 50.
   ````
   
-  A sample larangPaginator built url for paginating will be `http://localhost:8088/api/consumer/transactions?page=2&paginate=50`
+  A sample larangPaginator built url for paginating will be `http://localhost:8088/api/organizations?page=1&paginate=5`
+  
   
 ````
- public paginator = { 
-    path: 'http://localhost:8088/api/consumer/transactions',
-    limit: 30,
-    data: {},
-    from: 'consumer_transactions'
-  
- };
+  public paginator = {
+    path: 'http://localhost:8088/api/organizations',
+    limit: 5,
+    data: null,
+    from: 'list_organizations'
+
+  };
  
  // EventService is a service created to push data to fro between classes that can inject a service, you can inject the eventservice from the paginator.
    
@@ -72,16 +73,16 @@ Add `LarangPaginatorModule.forRoot()` in AppModule or Other Modules using `Laran
        this.paginator.data = res.data; // update paginated data in view
      });
      
-     private getTransactions() {
-      this.http.get(this.paginator.path).subscribe(
-      (res) => {
-          this.paginator.data = res.data
-      },
-      (err) => {
-      
-      }
-      )
-     }
+   private getTransactions() {
+     this.http.get(this.paginator.path + `?page=1&paginate=${this.paginator.limit}`).subscribe(
+       (res) => {
+         this.paginator.data = res['data'];
+       },
+       (err) => {
+ 
+       }
+     );
+   }
      
      ngOninit() {
       this.getTransactions();
@@ -93,7 +94,7 @@ Add `LarangPaginatorModule.forRoot()` in AppModule or Other Modules using `Laran
   Add this below the table you want it to paginate data from backend.
   
   ````
-  <table>
+  <table  *ngIf="paginator.data">
     <tr>
       <td>#</td>
       <td>Name</td>
@@ -106,13 +107,24 @@ Add `LarangPaginatorModule.forRoot()` in AppModule or Other Modules using `Laran
   
   </table>
   
-  <app-paginator [from]="paginator.from" [data]="paginator.data" [path]="paginator.path"
+  <app-paginator *ngIf="paginator.data" [from]="paginator.from" [data]="paginator.data" [path]="paginator.path"
                  [limit]="paginator.limit"></app-paginator>
  ````
 
+## Backend expected request
+
+Your backend will expect 
+
+````
+page: integer to determine current page
+paginate: integer to determine limit of data per page.
+````
  
 ## Build as a package
 
 `npm run pack-build`
 
 
+## Publish to npm
+
+`npm publish dist`

@@ -19,7 +19,7 @@
   </li>
 </ul>
 
-<table>
+<table  *ngIf="paginator.data">
   <tr>
     <td>#</td>
     <td>Name</td>
@@ -32,7 +32,7 @@
 
 </table>
 
-<app-paginator [from]="paginator.from" [data]="paginator.data" [path]="paginator.path"
+<app-paginator *ngIf="paginator.data" [from]="paginator.from" [data]="paginator.data" [path]="paginator.path"
                [limit]="paginator.limit"></app-paginator>
 
 

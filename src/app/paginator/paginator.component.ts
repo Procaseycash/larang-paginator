@@ -104,13 +104,13 @@ export class PaginatorComponent implements OnInit, AfterViewInit {
   }
 
   ngOnInit() {
+    console.log('this.data=', this.data);
     this.nextPrevPage();
     this.getPages();
-    // console.log('this.data=', this.data, this.next_page, this.prev_page);
   }
 
   ngAfterViewInit() {
-
+    console.log('this.data=', this.data);
   }
 
 }

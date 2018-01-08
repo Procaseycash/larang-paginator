@@ -11,8 +11,8 @@ export class AppComponent implements OnInit {
   title = 'app';
   public paginator = {
     path: 'http://localhost:8088/api/organizations',
-    limit: 30,
-    data: {},
+    limit: 5,
+    data: null,
     from: 'list_organizations'
 
   };
@@ -25,7 +25,7 @@ export class AppComponent implements OnInit {
     });
   }
   private getTransactions() {
-    this.http.get(this.paginator.path).subscribe(
+    this.http.get(this.paginator.path + `?page=1&paginate=${this.paginator.limit}`).subscribe(
       (res) => {
         this.paginator.data = res['data'];
       },
