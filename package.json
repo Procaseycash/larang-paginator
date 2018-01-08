@@ -1,6 +1,6 @@
 {
   "name": "larang-paginator",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "license": "MIT",
   "scripts": {
     "ng": "ng",
@@ -52,5 +52,22 @@
     "ts-node": "~3.2.0",
     "tslint": "~5.7.0",
     "typescript": "~2.4.2"
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Procaseycash/larang-paginator.git"
+  },
+  "keywords": [
+    "Laravel",
+    "Angular",
+    "Paginator"
+  ],
+  "author": "Kazeem Olanipekun <kezyolanipekun@gmail.com>",
+  "contributors": [
+    "Kazeem Olanipekun <kezyolanipekun@gmail.com>"
+  ],
+  "bugs": {
+    "url": "https://github.com/Procaseycash/larang-paginator/issues"
+  },
+  "homepage": "https://github.com/Procaseycash/larang-paginator#README"
 }
