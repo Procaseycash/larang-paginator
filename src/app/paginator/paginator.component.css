@@ -41,6 +41,7 @@
   color: #007bff;
   background-color: #fff;
   border: 1px solid #ddd;
+  cursor: pointer;
 }
 
 .page-link:focus, .page-link:hover {
