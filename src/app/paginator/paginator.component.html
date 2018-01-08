@@ -1,0 +1,21 @@
+<nav aria-label="..." *ngIf="pages.length !== 0">
+  <ul class="pagination  justify-content-center">
+    <li class="page-item" [class.disabled]="data['prev_page_url'] === null" >
+      <a class="page-link" (click)="loadData((prev_page + '&paginate=' + limit), prev_page)" role="button" tabindex="-1">Previous</a>
+    </li>
+    <li [class.hide]="pages.length === 0" [class.show]="pages.length > 0" *ngFor="let page of pages" id="page_{{page}}" [class.active]="data['current_page'] === page" class="animated fadeInRight page-item">
+      <a class="page-link" (click)="loadData(('page=' + page + '&paginate=' + limit), page)" role="button">
+        <i *ngIf="page === showLoad" class="fa fa-spin fa-spinner"></i> {{page}}
+      </a>
+    </li>
+    <li  *ngIf="totalPages.length > perNav">
+      <a (click)="getPaging()" title="Load More Navigation" role="button" class="page-link">...</a>
+    </li>
+    <li  *ngIf="pages.length === 0">
+      <a role="button" class="page-link"><i class="fa fa-spin fa-spinner"></i></a>
+    </li>
+    <li class="page-item"  [class.disabled]="data['next_page_url'] === null" >
+      <a class="page-link" (click)="loadData((next_page + '&paginate=' + limit), next_page)" role="button">Next</a>
+    </li>
+  </ul>
+</nav>
