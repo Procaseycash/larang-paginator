@@ -50,6 +50,7 @@ Add `LarangPaginatorModule.forRoot()` in AppModule or Other Modules using `Laran
   from: the key the eventService will use in mapping when data has responded from paginator. (from key must be unique to every component using pagination)
   data: (paginated response), this must be the first data rendered from the component which information are picked to generate the pagination.
   limit: paginated data per page, default is 50.
+  perNav: navigation bar to show at a time: defualt is 5.
   ````
   
   A sample larangPaginator built url for paginating will be `http://localhost:8088/api/organizations?page=1&paginate=5`
@@ -59,6 +60,7 @@ Add `LarangPaginatorModule.forRoot()` in AppModule or Other Modules using `Laran
   public paginator = {
     path: 'http://localhost:8088/api/organizations',
     limit: 5,
+    perNav: 5,
     data: null,
     from: 'list_organizations'
 
@@ -110,7 +112,7 @@ Add `LarangPaginatorModule.forRoot()` in AppModule or Other Modules using `Laran
   </table>
   
   <app-paginator *ngIf="paginator.data" [from]="paginator.from" [data]="paginator.data" [path]="paginator.path"
-                 [limit]="paginator.limit"></app-paginator>
+                 [limit]="paginator.limit" [perNav]="paginator.perNav"></app-paginator>
  ````
 
 ## Backend expected request

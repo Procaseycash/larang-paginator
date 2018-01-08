@@ -12,6 +12,7 @@ export class AppComponent implements OnInit {
   public paginator = {
     path: 'http://localhost:8088/api/organizations',
     limit: 5,
+    perNav: 5,
     data: null,
     from: 'list_organizations'
 

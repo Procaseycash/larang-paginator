@@ -12,10 +12,10 @@ export class PaginatorComponent implements OnInit, AfterViewInit {
   @Input() path = '';
   @Input() limit = 50;
   @Input() from = '';
+  @Input() perNav = 5;
   public next_page = '';
   public prev_page = '';
   public showLoad = 0;
-  public perNav = 2;
   public totalPages = [];
   public pages: Array<number> = [];
   public alert = {
