@@ -73,7 +73,7 @@ Add `LarangPaginatorModule.forRoot()` in AppModule or Other Modules using `Laran
      });
      
      private getTransactions() {
-      this.http.get('sub-url').subscribe(
+      this.http.get(this.paginator.path).subscribe(
       (res) => {
           this.paginator.data = res.data
       },
@@ -84,7 +84,7 @@ Add `LarangPaginatorModule.forRoot()` in AppModule or Other Modules using `Laran
      }
      
      ngOninit() {
-      this.getTransations();
+      this.getTransactions();
      }
       
   ````
@@ -94,19 +94,20 @@ Add `LarangPaginatorModule.forRoot()` in AppModule or Other Modules using `Laran
   
   ````
   <table>
-  <tr>
-  <td>#</td>
-  <td>title</td>
-  </tr>
+    <tr>
+      <td>#</td>
+      <td>Name</td>
+    </tr>
   
-  <tr *ngFor="let transaction of paginator.data; let i = index;">
-  <td>{{((paginator.data['current_page'] - 1) * paginator.limit + i + 1) || (i + 1)}}</td>
-  <td>{{transaction?.title}}</td>
-  </tr>
- 
+    <tr *ngFor="let page of paginator.data; let i = index;">
+      <td>{{((paginator.data['current_page'] - 1) * paginator.limit + i + 1) || (i + 1)}}</td>
+      <td>{{page?.name}}</td>
+    </tr>
+  
   </table>
   
- <app-paginator [from]="paginator.from"  [data]="paginator.data" [path]="paginator.path" [limit]="paginator.limit"></app-paginator>
+  <app-paginator [from]="paginator.from" [data]="paginator.data" [path]="paginator.path"
+                 [limit]="paginator.limit"></app-paginator>
  ````
 
  

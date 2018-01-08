@@ -68,28 +68,17 @@ export class PaginatorComponent implements OnInit, AfterViewInit {
     // console.log('url = ', url);
     this.paginatorService.listByPaginator(url).subscribe(
       (res: Res) => {
-        if (res && res.status) {
           if (this.showLoad > this.pages.length) {
             this.getPaging();
           }
-          if (res.data.list.length > 0) {
-            this.data = res.data;
-            this.nextPrevPage();
-            this.eventsService.broadcast(this.from, res);
-          } else {
-            // this.Alert.info('No Result in Pagination');
-          }
+          this.data = res.data;
+          this.nextPrevPage();
+          this.eventsService.broadcast(this.from, res);
           this.showLoad = 0;
-        } else {
-          this.showLoad = 0;
-          // this.Alert.error('An error was encountered while processing this request, please try again.', data);
-        }
         // console.log('data=>', data);
       },
       err => {
         this.showLoad = 0;
-        // this.Alert.error(err.message || 'An error was encountered, please contact admin.');
-        // console.log('Err response', err);
       }
     );
   }
@@ -127,7 +116,7 @@ export class PaginatorComponent implements OnInit, AfterViewInit {
 }
 
 interface DataRes {
-  list: Array<Object>;
+  data: Array<Object>;
   [propName: string]: any;
 }
 

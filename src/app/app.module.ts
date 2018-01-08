@@ -4,7 +4,7 @@ import { NgModule } from '@angular/core';
 
 import { AppComponent } from './app.component';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
-import {PaginatorModule} from './paginator/larang.paginator.module';
+import {LarangPaginatorModule} from './paginator/larang.paginator.module';
 
 
 @NgModule({
@@ -13,7 +13,7 @@ import {PaginatorModule} from './paginator/larang.paginator.module';
   ],
   imports: [
     BrowserModule,
-    PaginatorModule.forRoot(),
+    LarangPaginatorModule.forRoot(),
     NgbModule.forRoot()
   ],
   providers: [],
