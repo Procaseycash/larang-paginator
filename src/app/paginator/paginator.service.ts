@@ -4,10 +4,8 @@ import {Observable} from 'rxjs/Observable';
 
 @Injectable()
 export class PaginatorService {
-  private authUser: any;
 
-  constructor(private http: HttpClient) {
-  }
+  constructor(private http: HttpClient) {}
 
   /**
    * This is used to list all by paginator

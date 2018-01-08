@@ -18,9 +18,7 @@ export class PaginatorComponent implements OnInit, AfterViewInit {
   public showLoad = 0;
   public totalPages = [];
   public pages: Array<number> = [];
-  public alert = {
-    visible: false
-  };
+
 
   constructor(private paginatorService: PaginatorService,
               private eventsService: EventsService) {
