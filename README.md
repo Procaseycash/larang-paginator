@@ -62,6 +62,8 @@ Add `LarangPaginatorModule.forRoot()` in AppModule or Other Modules using `Laran
   data: (paginated response), this must be the first data rendered from the component which information are picked to generate the pagination.
   limit: paginated data per page, default is 50.
   perNav: navigation bar to show at a time: defualt is 5.
+  viewPage: string value to hold the Integer value for the next page. default is 'page'
+  paginate: string value to hold the Integer value for limit in a view page. defualt is 'paginate'.
   ````
   
   A sample larangPaginator built url for paginating will be `http://localhost:8088/api/organizations?page=1&paginate=5`
@@ -150,8 +152,8 @@ export class AppComponent implements OnInit {
 Your backend will expect 
 
 ````
-page: integer to determine current page
-paginate: integer to determine limit of data per page.
+viewPage: integer to determine next page
+paginate: integer to determine limit of data per view page.
 ````
  
 ## Build as a package

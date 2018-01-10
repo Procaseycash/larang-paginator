@@ -13,6 +13,8 @@ export class PaginatorComponent implements OnInit, AfterViewInit {
   @Input() limit = 50;
   @Input() from = '';
   @Input() perNav = 5;
+  @Input() viewPage: string = 'page';
+  @Input() paginate: string = 'paginate';
   public next_page = '';
   public prev_page = '';
   public showLoad = 0;
@@ -90,12 +92,12 @@ export class PaginatorComponent implements OnInit, AfterViewInit {
     }
     if (this.data['next_page_url']) {
       const nextPos = this.data['next_page_url'].indexOf('page=');
-      this.next_page = this.data['next_page_url'].substr(nextPos).trim();
+      this.next_page = this.data['next_page_url'].substr(nextPos).trim().replace('page', this.viewPage);
       // console.log('pois=', nextPos, this.next_page);
     }
     if (this.data['prev_page_url']) {
       const prevPos = this.data['prev_page_url'].indexOf('page=');
-      this.prev_page = this.data['prev_page_url'].substr(prevPos).trim();
+      this.prev_page = this.data['prev_page_url'].substr(prevPos).trim().replace('page', this.viewPage);
       // console.log('prpos=', prevPos, this.prev_page);
     }
   }
