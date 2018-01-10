@@ -29,6 +29,13 @@ This is a Laravel Angular Paginator for tables. For other backend language to us
  Angular 4 from 4.0.0 and above.
  Angular 5 from 5.0.0 and above.
  ````
+ 
+ ## Sample Usage 
+ 
+ You can download sample usage of this library for angular 4 & 5 from release note through this url
+  
+ `https://github.com/Procaseycash/use-larang-paginator`
+ 
  ## Dependencies
  
  `npm install font-awesome --save`
@@ -66,16 +73,16 @@ Add `LarangPaginatorModule.forRoot()` in AppModule or Other Modules using `Laran
 
   
 ````
- import {Component, OnInit} from '@angular/core';
- import {EventsService} from "./paginator/event.service";
- import {HttpClient} from "@angular/common/http";
- 
+ import {AfterViewInit, Component, OnInit} from '@angular/core';
+ import {EventsService} from "larang-paginator";
+ import {Http} from "@angular/http";
+ import 'rxjs/add/operator/map';
  @Component({
    selector: 'app-root',
    templateUrl: './app.component.html',
    styleUrls: ['./app.component.css']
  })
- export class AppComponent implements OnInit {
+ export class AppComponent implements OnInit, AfterViewInit {
    title = 'app';
    public paginator = {
      path: 'http://localhost:8088/api/organizations',
@@ -86,17 +93,19 @@ Add `LarangPaginatorModule.forRoot()` in AppModule or Other Modules using `Laran
  
    };
  
-   constructor(private eventsService: EventsService, private http: HttpClient) {
+   constructor(private eventsService: EventsService, private http: Http) {
      this.eventsService.on(this.paginator.from, (res) => {
        // pass response to the property rendering the data in view
  
        this.paginator.data = res.data; // update paginated data in view
      });
    }
-   private getTransactions() {
-     this.http.get(this.paginator.path + `?page=1&paginate=${this.paginator.limit}`).subscribe(
+   private getOrganizations() {
+     this.http.get(this.paginator.path + `?page=1&paginate=${this.paginator.limit}`)
+       .map(res => res.json()).subscribe(
        (res) => {
-         this.paginator.data = res['data'];
+         this.paginator.data = res.data;
+         console.log('Response=', res);
        },
        (err) => {
  
@@ -105,7 +114,9 @@ Add `LarangPaginatorModule.forRoot()` in AppModule or Other Modules using `Laran
    }
  
    ngOnInit() {
-     this.getTransactions();
+     this.getOrganizations();
+   }
+   ngAfterViewInit() {
    }
  }
 
@@ -116,22 +127,24 @@ Add `LarangPaginatorModule.forRoot()` in AppModule or Other Modules using `Laran
   Add this below the table you want it to paginate data from backend.
   
   ````
- <div class="col-sm-6 col-sm-auto">
- <table width="100%" class="table table-striped table-responsive"  *ngIf="paginator.data">
-   <tr>
-     <td>#</td>
-     <td>Name</td>
-   </tr>
+ <div *ngIf="paginator.data" class="col-sm-6 col-sm-auto">
+   <table width="100%" class="table table-striped table-responsive">
+     <tr>
+       <td>#</td>
+       <td>Name</td>
+       <td>Email</td>
+     </tr>
  
-   <tr *ngFor="let page of paginator.data['data']; let i = index;">
-     <td>{{((paginator.data['current_page'] - 1) * paginator.limit + i + 1) || (i + 1)}}</td>
-     <td>{{page?.name}}</td>
-   </tr>
+     <tr *ngFor="let page of paginator.data['data']; let i = index;">
+       <td>{{((paginator.data['current_page'] - 1) * paginator.limit + i + 1) || (i + 1)}}</td>
+       <td>{{page?.name}}</td>
+       <td>{{page?.email}}</td>
+     </tr>
  
- </table>
+   </table>
  
- <app-paginator *ngIf="paginator.data" [from]="paginator.from" [data]="paginator.data" [path]="paginator.path"
-                [limit]="paginator.limit" [perNav]="paginator.perNav"></app-paginator>
+   <app-paginator [from]="paginator.from" [data]="paginator.data" [path]="paginator.path"
+                  [limit]="paginator.limit" [perNav]="paginator.perNav"></app-paginator>
  
  </div>
 ````
