@@ -1,4 +1,4 @@
-# LarangPaginator (Angular ^5...)
+# LarangPaginator (Angular 4^ & ^5...)
 
 This is a Laravel Angular Paginator for tables. For other backend language to use this library. Please make sure your success response conforms with this response: 
   
