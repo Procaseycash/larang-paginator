@@ -144,7 +144,12 @@ Add `LarangPaginatorModule.forRoot()` in AppModule or Other Modules using `Laran
      </tr>
  
    </table>
- 
+   
+   <!-- You can add viewPage & paginate name. the default sample will be page=1&paginate=40
+        you can inject [viewPage]="'perPage'", [paginate]="'limit'" and u get a sample of perPage=1&limit=40 
+        
+        -->
+   
    <app-paginator [from]="paginator.from" [data]="paginator.data" [path]="paginator.path"
                   [limit]="paginator.limit" [perNav]="paginator.perNav"></app-paginator>
  
