@@ -87,17 +87,18 @@ export class PaginatorComponent implements OnInit, AfterViewInit {
    * @returns {null}
    */
   nextPrevPage() {
+    const queryString = this.viewPage.trim() + '=';
     if (Object.keys(this.data).length === 0) {
       return null;
     }
     if (this.data['next_page_url']) {
-      const nextPos = this.data['next_page_url'].indexOf('page=');
-      this.next_page = this.data['next_page_url'].substr(nextPos).trim().replace('page', this.viewPage);
+      const nextPos = this.data['next_page_url'].indexOf(queryString);
+      this.next_page = this.data['next_page_url'].substr(nextPos).trim();
       // console.log('pois=', nextPos, this.next_page);
     }
     if (this.data['prev_page_url']) {
-      const prevPos = this.data['prev_page_url'].indexOf('page=');
-      this.prev_page = this.data['prev_page_url'].substr(prevPos).trim().replace('page', this.viewPage);
+      const prevPos = this.data['prev_page_url'].indexOf(queryString);
+      this.prev_page = this.data['prev_page_url'].substr(prevPos).trim();
       // console.log('prpos=', prevPos, this.prev_page);
     }
   }
