@@ -64,6 +64,10 @@ Add `LarangPaginatorModule.forRoot()` in AppModule or Other Modules using `Laran
   perNav: navigation bar to show at a time: defualt is 5.
   viewPage: string value to hold the Integer value for the next page. default is 'page'
   paginate: string value to hold the Integer value for limit in a view page. defualt is 'paginate'.
+  
+   
+  Note that the query string in (next_page_url & prev_page_url) must be thesame to what is passed down in viewPage & paginate for paginator to work with.
+
   ````
   
   A sample larangPaginator built url for paginating will be `http://localhost:8088/api/organizations?page=1&paginate=5`
