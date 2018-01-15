@@ -1,7 +1,7 @@
 import {AfterViewInit, Component, Input, OnInit} from '@angular/core';
 import {EventsService} from './event.service';
 import {PaginatorService} from './paginator.service';
-
+import 'rxjs/add/operator/map';
 @Component({
   selector: 'app-paginator',
   templateUrl: './paginator.component.html',
