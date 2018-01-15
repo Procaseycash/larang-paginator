@@ -109,7 +109,7 @@ Add `LarangPaginatorModule.forRoot()` in AppModule or Other Modules using `Laran
        .map(res => res.json()).subscribe(
        (res) => {
          this.paginator.data = res.data;
-         console.log('Response=', res);
+         // console.log('Response=', res);
        },
        (err) => {
  
