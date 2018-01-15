@@ -65,16 +65,18 @@ export class PaginatorComponent implements OnInit, AfterViewInit {
     }
     this.showLoad = (typeof (page) === 'string') ? parseInt((page.substr(page.indexOf('=') + 1)), 10) : page;
    // console.log('showLoad= ', this.showLoad, page);
-    this.paginatorService.listByPaginator(url).subscribe(
+    this.paginatorService.listByPaginator(url).map(res => res.json()).subscribe(
       (res: Res) => {
           if (this.showLoad > this.pages.length) {
             this.getPaging();
           }
           this.data = res.data;
+
+        // console.log('data=', this.data);
           this.nextPrevPage();
           this.eventsService.broadcast(this.from, res);
           this.showLoad = 0;
-        // console.log('data=>', data);
+        // console.log('data=>', res);
       },
       err => {
         this.showLoad = 0;

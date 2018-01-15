@@ -21,7 +21,7 @@ export class AppComponent implements OnInit {
   constructor(private eventsService: EventsService, private http: Http) {
     this.eventsService.on(this.paginator.from, (res) => {
       // pass response to the property rendering the data in view
-
+      console.log('data=', res.data);
       this.paginator.data = res.data; // update paginated data in view
     });
   }
