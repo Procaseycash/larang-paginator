@@ -1,14 +1,14 @@
 import {NgModule} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {PaginatorComponent} from './paginator.component';
-import {HttpClientModule} from '@angular/common/http';
 import {PaginatorService} from "./paginator.service";
 import {EventsService} from "./event.service";
+import {HttpModule} from "@angular/http";
 
 @NgModule({
   imports: [
     CommonModule,
-    HttpClientModule
+    HttpModule
   ],
   declarations: [PaginatorComponent],
   exports: [PaginatorComponent]
