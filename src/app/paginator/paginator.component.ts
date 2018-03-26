@@ -70,7 +70,7 @@ export class PaginatorComponent implements OnInit, AfterViewInit {
           if (this.showLoad > this.pages.length) {
             this.getPaging();
           }
-          this.data = res.data;
+          this.data = (res['last_page']) ? res : res.data || res.content || res.contents || res.resource || res.resources || res.list || res.items;
           this.nextPrevPage();
           this.eventsService.broadcast(this.from, res);
           this.showLoad = 0;
@@ -122,6 +122,12 @@ interface DataRes {
 
 interface Res {
   data: DataRes;
+  content: DataRes,
+  contents: DataRes,
+  resource: DataRes,
+  resources: DataRes,
+  list: DataRes,
+  items: DataRes,
   status: boolean;
 
   [propName: string]: any;
